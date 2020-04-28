@@ -3,7 +3,7 @@ package v8console
 import (
 	"fmt"
 
-	"github.com/augustoroman/v8"
+	"github.com/harikb/vEight"
 )
 
 const jsConsoleStub = `console = (function() {

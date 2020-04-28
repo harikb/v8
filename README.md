@@ -1,4 +1,4 @@
-# V8 Bindings for Go [![Build Status](https://travis-ci.org/augustoroman/v8.svg?branch=master)](https://travis-ci.org/augustoroman/v8) [![Go Report Card](https://goreportcard.com/badge/github.com/augustoroman/v8)](https://goreportcard.com/report/github.com/augustoroman/v8) [![GoDoc](https://godoc.org/github.com/augustoroman/v8?status.svg)](https://godoc.org/github.com/augustoroman/v8)
+# V8 Bindings for Go [![Build Status](https://travis-ci.org/harikb/vEight.svg?branch=master)](https://travis-ci.org/harikb/vEight) [![Go Report Card](https://goreportcard.com/badge/github.com/harikb/vEight)](https://goreportcard.com/report/github.com/harikb/vEight) [![GoDoc](https://godoc.org/github.com/harikb/vEight?status.svg)](https://godoc.org/github.com/harikb/vEight)
 
 The v8 bindings allow a user to execute javascript from within a go executable.
 
@@ -34,11 +34,11 @@ cd libv8-6.3.292.48.1-x86_64-darwin-16
 tar -xzf data.tar.gz
 
 # Symlink the compiled libraries and includes
-ln -s $(pwd)/data/vendor/v8/include $GOPATH/src/github.com/augustoroman/v8/include
-ln -s $(pwd)/data/vendor/v8/out/x64.release $GOPATH/src/github.com/augustoroman/v8/libv8
+ln -s $(pwd)/data/vendor/v8/include $GOPATH/src/github.com/harikb/vEight/include
+ln -s $(pwd)/data/vendor/v8/out/x64.release $GOPATH/src/github.com/harikb/vEight/libv8
 
 # Run the tests to make sure everything works
-cd $GOPATH/src/github.com/augustoroman/v8
+cd $GOPATH/src/github.com/harikb/vEight
 go test
 ```
 
@@ -48,14 +48,14 @@ For linux builds, you can use pre-built libraries or build your own.
 
 ## Pre-built versions
 
-To use a pre-built library, select the desired v8 version from https://hub.docker.com/r/augustoroman/v8-lib/tags/ and then run:
+To use a pre-built library, select the desired v8 version from https://hub.docker.com/r/harikb/vEight-lib/tags/ and then run:
 
 ```bash
 # Select the v8 version to use:
 export V8_VERSION=6.7.77
-docker pull augustoroman/v8-lib:$V8_VERSION           # Download the image, updating if necessary.
+docker pull harikb/vEight-lib:$V8_VERSION           # Download the image, updating if necessary.
 docker rm v8 ||:                                      # Cleanup from before if necessary.
-docker run --name v8 augustoroman/v8-lib:$V8_VERSION  # Run the image to provide access to the files.
+docker run --name v8 harikb/vEight-lib:$V8_VERSION  # Run the image to provide access to the files.
 docker cp v8:/v8/include include/                     # Copy the include files.
 docker cp v8:/v8/lib libv8/                           # Copy the library fiels.
 ```
@@ -66,14 +66,14 @@ This takes a lot longer, but is still easy:
 
 ```bash
 export V8_VERSION=6.7.77
-docker build --build-arg V8_VERSION=$V8_VERSION --tag augustoroman/v8-lib:$V8_VERSION docker-v8-lib/
+docker build --build-arg V8_VERSION=$V8_VERSION --tag harikb/vEight-lib:$V8_VERSION docker-v8-lib/
 ```
 
 and then extract the files as above:
 
 ```bash
 docker rm v8 ||:                                      # Cleanup from before if necessary.
-docker run --name v8 augustoroman/v8-lib:$V8_VERSION  # Run the image to provide access to the files.
+docker run --name v8 harikb/vEight-lib:$V8_VERSION  # Run the image to provide access to the files.
 docker cp v8:/v8/include include/                     # Copy the include files.
 docker cp v8:/v8/lib libv8/                           # Copy the library fiels.
 ```
@@ -94,8 +94,8 @@ You need to build v8 statically and place it in a location cgo knows about. This
 1.  Build the bindings
 
 ```
-go get github.com/augustoroman/v8
-export V8_GO=$GOPATH/src/github.com/augustoroman/v8
+go get github.com/harikb/vEight
+export V8_GO=$GOPATH/src/github.com/harikb/vEight
 export V8_BUILD=$V8_GO/v8/build #or wherever you like
 mkdir -p $V8_BUILD
 cd $V8_BUILD

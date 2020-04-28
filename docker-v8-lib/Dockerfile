@@ -1,10 +1,10 @@
 # This dockerfile will build v8 as static libraries suitable for being linked
-# to the github.com/augustoroman/v8 go library bindings.
+# to the github.com/harikb/vEight go library bindings.
 #
 # The V8_VERSION arg is required and specifies which v8 git version to build.
 # The recommended incantation to build this is:
 #
-#   docker build --build-arg V8_VERSION=6.7.77 --tag augustoroman/v8-lib:6.7.77 .
+#   docker build --build-arg V8_VERSION=6.7.77 --tag harikb/vEight-lib:6.7.77 .
 #
 
 FROM ubuntu:16.04 as builder
